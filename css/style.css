@@ -1,0 +1,180 @@
+#navbar-container {
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 19px 20px ;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    font-family: "lemon milk", sans-serif;
+
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    transition: 0.6s;
+    padding-right: 25px;
+
+}
+
+
+a:hover{
+    color: #8400ff;
+    font-size: 20px;
+}
+
+#menu {
+    display: flex;
+    gap: 20px;
+}
+/* milieur */
+
+#container h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    padding-top: 7%;
+    font-family: "lemon milk", sans-serif;
+    color: #8400ff;
+
+}
+
+#container p{
+    text-align: center;
+    font-family: "lemon milk", sans-serif;
+    font-size: 20px;
+
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
+}
+
+button {
+     /* Ajoute un espace entre le texte et le bouton */
+}
+button{
+    margin-top: 20px;
+    background-color: #8400ff;
+    color: #ffffff;
+    border: 5px solid #8400ff;
+    padding: 10px 20px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: 0.6s;
+    font-family: "lemon milk", sans-serif;
+}
+button:hover{
+    background-color: #ffffff;
+    color: #8400ff;
+    font-size: 20px;
+    border: 5px solid #ffffff;
+}
+#container a {
+    padding-left: 20px;
+}
+
+/* module */
+
+#module{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
+    font-family: "lemon milk", sans-serif;
+    font-size: 20px;
+    padding: 0 ;
+
+}
+#module > div {
+    border: 4px solid #8400ff; /* Ajoute un cadre violet à chaque module */
+    border-radius: 10px; /* Arrondit les coins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre */
+    padding: 20px; /* Ajoute de l'espace à l'intérieur du cadre */
+    margin: 10px; /* Ajoute de l'espace entre les modules */
+    text-align: center; /* Centre le texte à l'intérieur */
+    background-color: #000000;
+    color: white;
+}
+/* module */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    font-family: Bahnschrift,"lemon milk", sans-serif;
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 90%; /* Utilise un pourcentage pour s'adapter aux petits écrans */
+    max-width: 400px; /* Limite la largeur maximale */
+    margin: 10% auto; /* Centre horizontalement et verticalement */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre pour un meilleur contraste */
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addBtn {
+    background-color: #8400ff;
+    color: white;
+}
+
+#cancelBtn {
+    background-color: #eee;
+    color: #8400ff;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-style {
+    padding: 10px 15px;
+    font-size: 17px;
+    background-color: #8400ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
