@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/stylelogin.css" rel="stylesheet">
+    <title>register</title>
+</head>
+<body>
+<div class="login-container">
+    <h1>Créer un compte</h1>
+    <form action="../script-php/register.php" method="post">
+
+        <input name="action" type="hidden" value="register">
+        <label for="username">username:</label>
+        <input id="username" name="username" required type="text">
+        <br>
+        <label for="password">Mot de passe:</label>
+        <input id="password" name="password" required type="password">
+        <br>
+        <button type="submit">S'inscrire</button>
+    </form>
+    <p>Déjà inscrit ? <a href="login.html">Se connecter</a></p>
+</div>
+</body>
+</html>

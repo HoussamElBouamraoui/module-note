@@ -15,7 +15,7 @@
         const description = document.getElementById("module-description").value.trim();
 
         if (name === "") {
-            alert("Veuillez entrer un nom de module.");
+            alert("Veuillez entrer un nom de module");
             return;
         }
 
@@ -35,7 +35,7 @@
         module.innerHTML = `
         <h3>${name}</h3>
         <p>${description}</p>
-        <button onclick="window.location.href='observation.html?module=${encodeURIComponent(name)}'">Observations</button>
+        <button onclick="window.location.href='../pages/observation.html?module=${encodeURIComponent(name)}'">Observations</button>
         <button onclick="this.parentElement.remove()">Supprimer</button>
     `;
         modulesList.appendChild(module);
