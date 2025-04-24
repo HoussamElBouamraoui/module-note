@@ -1,11 +1,12 @@
 #navbar-container {
+    position: fixed;
     background-color: #000000;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 25px 19px 20px;
-    position: fixed;
+
     top: 0;
     left: 0;
     font-family: "lemon milk", sans-serif;
