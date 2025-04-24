@@ -39,11 +39,19 @@ textarea {
     position: relative;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     font-size: 15px;
+
+    /* 💡 Ajouts importants pour éviter le débordement */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.obs-item span {
+    display: block;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 .delete-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     background-color: #ff4d4d;
     color: white;
     border: none;
@@ -52,6 +60,8 @@ textarea {
     cursor: pointer;
     font-size: 12px;
     transition: background-color 0.3s ease;
+    margin-top: 10px; /* espace au-dessus */
+    display: inline-block;
 }
 .delete-btn:hover {
     background-color: #cc0000;

@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $admin['id'];
                 $_SESSION['username'] = $admin['username'];
                 $_SESSION['role'] = 'admin';
-                header("Location: ../index.html"); // ← rediriger vers index.html
+                header("Location: ../index.php"); // ← rediriger vers index.html
                 exit();
             } else {
                 echo "❌ Mot de passe incorrect (admin).";
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $student['id'];
                 $_SESSION['username'] = $student['username'];
                 $_SESSION['role'] = 'student';
-                header("Location: ../index.html"); // ← rediriger aussi vers index.html
+                header("Location: ../index.php"); // ← rediriger aussi vers index.html
                 exit();
             } else {
                 echo "❌ Mot de passe incorrect (étudiant).";

@@ -4,13 +4,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 19px 20px ;
+    padding: 25px 19px 20px;
     position: fixed;
     top: 0;
     left: 0;
-
     font-family: "lemon milk", sans-serif;
-
 }
 
 a {
@@ -19,11 +17,9 @@ a {
     font-size: 18px;
     transition: 0.6s;
     padding-right: 25px;
-
 }
 
-
-a:hover{
+a:hover {
     color: #8400ff;
     font-size: 20px;
 }
@@ -32,9 +28,8 @@ a:hover{
     display: flex;
     gap: 20px;
 }
-/* milieur */
 
-#container h1{
+#container h1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,27 +37,23 @@ a:hover{
     padding-top: 7%;
     font-family: "lemon milk", sans-serif;
     color: #8400ff;
-
 }
 
-#container p{
+#container p {
     text-align: center;
     font-family: "lemon milk", sans-serif;
     font-size: 20px;
-
 }
+
 #container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
+    height: 100vh;
 }
 
 button {
-     /* Ajoute un espace entre le texte et le bouton */
-}
-button{
     margin-top: 20px;
     background-color: #8400ff;
     color: #ffffff;
@@ -73,39 +64,52 @@ button{
     transition: 0.6s;
     font-family: "lemon milk", sans-serif;
 }
-button:hover{
+
+button:hover {
     background-color: #ffffff;
     color: #8400ff;
     font-size: 20px;
     border: 5px solid #ffffff;
 }
+
 #container a {
     padding-left: 20px;
 }
 
-/* module */
-
-#module{
+/* ✅ Style des modules ajoutés dynamiquement */
+#modules-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
+    flex-wrap: wrap;
+    justify-content: center; /* ou space-around pour joli */
+    gap: 20px;
+}
+.module-box {
+    flex: 0 0 calc(33.33% - 20px); /* 3 modules max sur une ligne */
+    box-sizing: border-box;
+    border: 1px solid #8400ff;
     font-family: "lemon milk", sans-serif;
-    font-size: 20px;
-    padding: 0 ;
+    padding: 20px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    transition: transform 0.3s ease;
+}
+@media (max-width: 768px) {
+    .module-box {
+        flex: 0 1 100%; /* 1 module par ligne */
+    }
+}
+.module-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-}
-#module > div {
-    border: 4px solid #8400ff; /* Ajoute un cadre violet à chaque module */
-    border-radius: 10px; /* Arrondit les coins */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre */
-    padding: 20px; /* Ajoute de l'espace à l'intérieur du cadre */
-    margin: 10px; /* Ajoute de l'espace entre les modules */
-    text-align: center; /* Centre le texte à l'intérieur */
-    background-color: #000000;
-    color: white;
-}
-/* module */
+
+
+
+/* Modale */
 .modal {
     display: none;
     position: fixed;
@@ -115,18 +119,18 @@ button:hover{
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
-    font-family: Bahnschrift,"lemon milk", sans-serif;
+    font-family: Bahnschrift, "lemon milk", sans-serif;
 }
 
 .modal-content {
     background-color: #fff;
-    width: 90%; /* Utilise un pourcentage pour s'adapter aux petits écrans */
-    max-width: 400px; /* Limite la largeur maximale */
-    margin: 10% auto; /* Centre horizontalement et verticalement */
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
     padding: 20px;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre pour un meilleur contraste */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content input,
