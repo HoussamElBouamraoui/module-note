@@ -24,9 +24,7 @@ $isLoggedIn = isset($_SESSION['username']);
                 <a href="pages/login.html">Login</a>
             <?php endif; ?>
         </div>
-        <div id="profil">
-            <a href="#">Profil</a>
-        </div>
+
         <div id="mode">
             <a href="index.php">Mode</a>
         </div>

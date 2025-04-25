@@ -21,6 +21,7 @@ CREATE TABLE student (
 CREATE TABLE modules (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    desciption TEXT,
     id_student INT NOT NULL,
     FOREIGN KEY (id_student) REFERENCES student(id) ON DELETE CASCADE
 );
