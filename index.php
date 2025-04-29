@@ -36,6 +36,7 @@ $isLoggedIn = isset($_SESSION['username']);
 <section>
     <div id="container">
         <div id="container1">
+
             <h1>Bienvenue sur notre site !</h1>
             <p>Nous sommes ravis de vous accueillir ici. Explorez nos fonctionnalités et profitez de votre visite.</p>
         </div>

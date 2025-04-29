@@ -1,38 +1,32 @@
 <?php
 session_start();
-
-// Vérifier si l'admin est connecté
 if (!isset($_SESSION['username'])) {
     header("Location: ../index.php");
     exit();
 }
-
 require_once '../base_donne/connexion.php';
-
 $message = "";
 
 // Ajout étudiant
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     $username = trim($_POST['username']);
-
-    if (!empty($username)) {
-        // Vérifie si l'étudiant existe déjà
+    $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+    if (!empty($username) && !empty($password)) {
         $stmt = $pdo->prepare("SELECT * FROM student WHERE username = ?");
         $stmt->execute([$username]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
         if ($result) {
             $message = "❌ Ce nom d'utilisateur existe déjà.";
         } else {
-            $stmt = $pdo->prepare("INSERT INTO student (username) VALUES (?)");
-            if ($stmt->execute([$username])) {
+            $stmt = $pdo->prepare("INSERT INTO student (username, password) VALUES (?, ?)");
+            if ($stmt->execute([$username, password_hash($password, PASSWORD_DEFAULT)])) {
                 $message = "✅ Étudiant ajouté avec succès.";
             } else {
                 $message = "❌ Erreur lors de l'ajout.";
             }
         }
     } else {
-        $message = "❌ Le nom d'utilisateur est obligatoire.";
+        $message = "❌ Tous les champs sont obligatoires.";
     }
 }
 
@@ -45,6 +39,27 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
+// Modification
+if (isset($_POST['edit'])) {
+    $id = $_POST['id'];
+    $nouveauUsername = trim($_POST['nouveauUsername']);
+    $nouveauPassword = trim($_POST['nouveauPassword']);
+    if (!empty($nouveauUsername)) {
+        if (!empty($nouveauPassword)) {
+            $stmt = $pdo->prepare("UPDATE student SET username = ?, password = ? WHERE id = ?");
+            $stmt->execute([$nouveauUsername, password_hash($nouveauPassword, PASSWORD_DEFAULT), $id]);
+        } else {
+            $stmt = $pdo->prepare("UPDATE student SET username = ? WHERE id = ?");
+            $stmt->execute([$nouveauUsername, $id]);
+        }
+        $message = "✅ Étudiant modifié.";
+        header("Location: admin_student.php");
+        exit();
+    } else {
+        $message = "❌ Le nom d'utilisateur ne peut pas être vide.";
+    }
+}
+
 // Récupération des étudiants
 $stmt = $pdo->query("SELECT * FROM student");
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -54,107 +69,69 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styleadmin.css" rel="stylesheet" type="text/css">
     <title>Gestion des étudiants</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #8400ff, #8400ff);
-            color: black;
-            padding: 40px;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-        }
-        h1, h2 {
-            color: #8400ff;
-        }
-        table {
-            background-color: #fff;
-            color: #181818;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .table-dark th {
-            background-color: #8400ff !important;
-            color: #fff !important;
-        }
-        .btn-custom {
-            background-color: #8400ff;
-            color: #fff;
-            border: none;
-        }
-        .btn-custom:hover {
-            background-color: #6c3483;
-            color: #fff;
-        }
-        a {
-            color: #8400ff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
-        .form-control {
-            background-color: #222;
-            color: #fff;
-            border: 1px solid #8400ff;
-        }
-        .form-control::placeholder {
-            color: #bbb;
-        }
-        .alert-success {
-            background-color: #8400ff;
-            color: #fff;
-            border: none;
-        }
-    </style>
 </head>
 <body>
-
 <div class="container">
-    <h1 class="mb-4">Espace Administrateur</h1>
-    <p>Bonjour, <strong><?php echo $_SESSION['username']; ?></strong> 👋</p>
-    <p><a href="logout.php">Déconnexion</a></p>
+    <header>
+        <h1>Espace Administrateur</h1>
+        <div class="admin-info">
+            <span>Bonjour, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong> </span>
+            <a href="../script-php/logout.php" class="logout-link">Déconnexion</a>
+        </div>
+    </header>
 
     <?php if ($message): ?>
-        <div class="alert alert-success"><?= $message ?></div>
+        <div class="alert-success"><?= $message ?></div>
     <?php endif; ?>
 
-    <h2>➕ Ajouter un étudiant</h2>
-    <form method="POST" class="row g-3 mb-5">
-        <div class="col-md-6">
-            <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur" required>
-        </div>
-        <div class="col-md-12">
-            <button type="submit" name="add" class="btn btn-custom">Ajouter</button>
-        </div>
-    </form>
+    <section class="add-student-section">
+        <h2>➕ Ajouter un étudiant</h2>
+        <form method="POST" class="add-student-form">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="add" class="btn-custom">Ajouter</button>
+            </div>
+        </form>
+    </section>
 
-    <h2>📋 Liste des étudiants</h2>
-    <table class="table table-bordered table-hover text-center">
-        <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($result as $row): ?>
+    <section class="student-list-section">
+        <h2>📋 Liste des étudiants</h2>
+        <table class="student-table">
+            <thead>
             <tr>
-                <td><?= htmlspecialchars($row['id']) ?></td>
-                <td><?= htmlspecialchars($row['username']) ?></td>
-                <td>
-                    <a href="admin_student.php?delete=<?= $row['id'] ?>" onclick="return confirm('Supprimer cet étudiant ?');">Supprimer</a>
-                </td>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Actions</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+            <?php foreach ($result as $row): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['id']) ?></td>
+                    <td><?= htmlspecialchars($row['username']) ?></td>
+                    <td>
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <input type="text" name="nouveauUsername" placeholder="Nouveau nom" value="<?= htmlspecialchars($row['username']) ?>" required class="form-control" style="width:120px;display:inline;">
+                            <input type="password" name="nouveauPassword" placeholder="Nouveau mot de passe" class="form-control" style="width:120px;display:inline;">
+                            <button type="submit" name="edit" class="btn-custom btn-action">Modifier</button>
+                            <a href="admin_student.php?delete=<?= $row['id'] ?>" onclick="return confirm('Supprimer cet étudiant ?');" class="btn-custom btn-action btn-delete">Supprimer</a>
+                        </form>
 
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </section>
+</div>
 </body>
 </html>
