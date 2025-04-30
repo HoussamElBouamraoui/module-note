@@ -35,3 +35,9 @@ CREATE TABLE notes (
     FOREIGN KEY (id_student) REFERENCES student(id) ON DELETE CASCADE,
     FOREIGN KEY (id_module) REFERENCES modules(id) ON DELETE CASCADE
 );
+-- tables pour les sessions
+CREATE TABLE `sessions` (
+  `session_id` VARCHAR(128) NOT NULL PRIMARY KEY,
+  `session_data` TEXT NOT NULL,
+  `last_access` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

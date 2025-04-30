@@ -15,14 +15,21 @@
             <input name="action" type="hidden" value="login">
 
             <label for="username">username:</label>
-            <input id="username" name="username" required type="text">
+            <input id="username" name="username" required type="text" autocomplete="username">
             <br>
             <label for="password">Password</label>
-            <input id="password" name="password" required type="password">
+            <input id="password" name="password" required type="password" autocomplete="current-password">
             <br>
-            <button type="submit">Login</button>
+            <div class="remember-wrapper">
+                <label class="remember-label">
+                    <input type="checkbox" name="remember">
+                    Se souvenir de moi
+                </label>
+            </div>
+            <div class="login-button-wrapper">
+                <button type="submit">Login</button>
+            </div>
             <p>Pas encore de compte ? <a href="register.html">Créer un compte</a></p>
-
         </form>
     </div>
 </section>

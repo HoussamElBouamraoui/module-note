@@ -1,6 +1,7 @@
 <?php
-session_start();
-$isLoggedIn = isset($_SESSION['username']);
+
+require_once 'script-php/sessioncookies.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,13 @@ $isLoggedIn = isset($_SESSION['username']);
     <div id="container">
         <div id="container1">
 
-            <h1>Bienvenue sur notre site !</h1>
+            <h1>
+                <?php if ($isLoggedIn): ?>
+                    Bienvenue <?php echo htmlspecialchars($_SESSION['username']); ?> !
+                <?php else: ?>
+                    Bienvenue 
+                <?php endif; ?>
+            </h1>
             <p>Nous sommes ravis de vous accueillir ici. Explorez nos fonctionnalités et profitez de votre visite.</p>
         </div>
 

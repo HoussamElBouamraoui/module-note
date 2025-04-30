@@ -16,6 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($admin && $password === $admin['password']) {
             $_SESSION['user_id'] = $admin['id'];
             $_SESSION['username'] = $admin['username'];
+
+            if (isset($_POST['remember'])) {
+                setcookie("admin_id", $admin['id'], [
+                    'expires' => time() + (30 * 24 * 60 * 60),
+                    'path' => '/',
+                    'secure' => isset($_SERVER['HTTPS']),
+                    'httponly' => true,
+                    'samesite' => 'Lax'
+                ]);
+            }
             header("Location: ../admin/admin_student.php");
             exit();
         }
@@ -28,6 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($student && password_verify($password, $student['password'])) {
             $_SESSION['user_id'] = $student['id'];
             $_SESSION['username'] = $student['username'];
+
+            setcookie("user_id", $student['id'], [
+                'expires' => time() + (30 * 24 * 60 * 60),
+                'path' => '/',
+                'secure' => isset($_SERVER['HTTPS']),
+                'httponly' => true,
+                'samesite' => 'Lax'
+            ]);
+            // Définit l'attribut SameSite du cookie à "Lax" :
+            // le cookie ne sera envoyé que lors de navigations normales (ex : clic sur un lien),
+            // mais pas lors de requêtes cross-site de type POST, ce qui aide à prévenir les attaques CSRF.
+
             header("Location: ../index.php");
             exit();
         }

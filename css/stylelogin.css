@@ -1,4 +1,4 @@
-/* Style global */
+/* 🌐 Réinitialisation globale */
 * {
     margin: 0;
     padding: 0;
@@ -6,70 +6,103 @@
     font-family: Arial, sans-serif;
 }
 
-/* Image de fond uniquement sur le body */
+/* 🖼️ Fond d'écran */
 body {
     background-image: url('../image/fondlogin.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* 📦 Conteneur du formulaire */
 .login-container {
     background-color: #ffffff;
-    padding: 50px 70px;      /* Moins de padding */
+    padding: 50px 70px;
     border-radius: 12px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 420px;        /* Plus étroit */
+    max-width: 420px;
     text-align: center;
 }
 
+/* 🏷️ Titre */
 .login-container h1 {
     margin-bottom: 24px;
-    font-size: 26px;         /* Plus petit */
+    font-size: 26px;
     color: #333333;
 }
 
+/* 🖋️ Label général */
 .login-container label {
     display: block;
     text-align: left;
     margin-bottom: 8px;
-    font-size: 16px;         /* Plus petit */
+    font-size: 16px;
     color: #555555;
 }
 
-.login-container input {
+/* ✏️ Champs texte */
+.login-container input[type="text"],
+.login-container input[type="password"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 18px;
     border: 2px solid #000000;
     border-radius: 6px;
-    font-size: 16px;         /* Plus petit */
+    font-size: 16px;
 }
 
-.login-container button {
-    width: 50%;
-    padding: 12px;
+/* ✅ Zone "Se souvenir de moi" */
+.remember-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.remember-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+    accent-color: #8400ff;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* 🔘 Bouton Login */
+.login-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.login-button-wrapper button {
+    padding: 12px 24px;
     background-color: #8400ff;
     color: #ffffff;
     border: none;
     border-radius: 6px;
-    font-size: 16px;         /* Plus petit */
+    font-size: 16px;
     cursor: pointer;
-    transition: 1s ;
+    transition: 0.3s;
 }
 
-.login-container button:hover {
+.login-button-wrapper button:hover {
     background-color: black;
-    font-size: 18px;
 }
 
+/* 🔗 Lien "Créer un compte" */
 .login-container p {
     margin-top: 16px;
     font-size: 15px;

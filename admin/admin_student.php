@@ -1,10 +1,12 @@
 <?php
-session_start();
-if (!isset($_SESSION['username'])) {
+require_once '../script-php/session_handler.php';
+
+if (!isset($_SESSION['username']) || !isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     header("Location: ../index.php");
     exit();
 }
 require_once '../base_donne/connexion.php';
+global $pdo;
 $message = "";
 
 // Ajout étudiant
@@ -18,8 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
         if ($result) {
             $message = "❌ Ce nom d'utilisateur existe déjà.";
         } else {
-            $stmt = $pdo->prepare("INSERT INTO student (username, password) VALUES (?, ?)");
-            if ($stmt->execute([$username, password_hash($password, PASSWORD_DEFAULT)])) {
+            $id_admin = $_SESSION['user_id']; // récupère l'id de l'admin connecté
+            $stmt = $pdo->prepare("INSERT INTO student (username, password, id_admin) VALUES (?, ?, ?)");
+            if ($stmt->execute([$username, password_hash($password, PASSWORD_DEFAULT), $id_admin])) {
                 $message = "✅ Étudiant ajouté avec succès.";
             } else {
                 $message = "❌ Erreur lors de l'ajout.";
@@ -61,7 +64,7 @@ if (isset($_POST['edit'])) {
 }
 
 // Récupération des étudiants
-$stmt = $pdo->query("SELECT * FROM student");
+$stmt = $pdo->query("SELECT student.*, admin.id AS id_admin FROM student LEFT JOIN admin ON student.id_admin = admin.id");
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -109,7 +112,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
-                <th>Actions</th>
+                <th>Admin créateur</th>
+                <th class="actions-col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -117,6 +121,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?= htmlspecialchars($row['id']) ?></td>
                     <td><?= htmlspecialchars($row['username']) ?></td>
+                    <td><?= htmlspecialchars($row['id_admin'] ?? '—') ?></td>
                     <td>
                         <form method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">

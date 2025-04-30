@@ -1,0 +1,40 @@
+projetdevweb/
+│
+├── .idea/                        # Dossier de configuration pour l'IDE
+│
+├── admin/
+│   ├── admin_student.php          # Page d'administration des étudiants
+│   └── styleadmin.css             # Feuille de style pour l'administration
+│
+├── base_donne/
+│   ├── connexion.php              # Connexion à la base de données
+│   └── smart_notes.sql            # Script SQL pour créer la base de données
+│
+├── css/
+│   ├── style.css                  # Feuille de style générale
+│   ├── stylelogin.css             # Feuille de style pour la page de connexion
+│   └── styleobservation.css       # Feuille de style pour la page d'observation
+│
+├── image/
+│   ├── fondadmin.jpg              # Image de fond pour l'administration
+│   ├── fondlogin.jpg              # Image de fond pour la page de connexion
+│   └── logo.png                   # Logo de l'application
+│
+├── js/
+│   ├── script.js                  # Script JavaScript principal
+│   └── script-observation.js      # Script JavaScript pour la page d'observation
+│
+├── pages/
+│   ├── login.html                 # Page de connexion
+│   ├── observation.html           # Page d'observation des données
+│   └── register.html              # Page d'inscription des utilisateurs
+│
+|
+|── script-php/
+|   ├── login.php                  # Script PHP pour la connexion
+|   ├── logout.php                 # Script PHP pour la déconnexion
+|   ├── register.php               # Script PHP pour l'inscription
+|   ├── sessioncookies.php         # Gère les sessions et les cookies
+|
+|
+├─ index.php                      # Page principale de l'application
