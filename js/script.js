@@ -14,7 +14,55 @@ if (!isLoggedIn) {
     if (addBtn) addBtn.disabled = true;
 }
 
+// Fonction pour charger les modules depuis la BDD et les afficher
+function loadModules() {
+    fetch('script-php/module/get_modules.php')
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                modulesList.innerHTML = ""; // reset
+                data.modules.forEach(module => {
+                    modulesList.appendChild(createModuleBox(module));
+                });
+            }
+        });
+}
 
+// Fonction pour créer le bloc HTML d'un module
+function createModuleBox(module) {
+    const div = document.createElement('div');
+    div.classList.add('module-box');
+    div.innerHTML = `
+      <h3>${module.name}</h3>
+      <p>${module.desciption}</p>
+      <button onclick="window.location.href='pages/observation.html?module=${encodeURIComponent(module.name)}'">Observations</button>
+      <button class="btn-delete">Supprimer</button>
+    `;
+    // Ajoute l'action JS de suppression
+    div.querySelector('.btn-delete').onclick = () => {
+        if (confirm('Supprimer ce module ?')) {
+            fetch('script-php/module/delete_module.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id: module.id})
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        div.remove(); // retire le module du DOM
+                    } else {
+                        alert(data.message || "Erreur lors de la suppression");
+                    }
+                });
+        }
+    };
+    return div;
+}
+
+// Charger les modules au chargement de la page
+window.onload = loadModules;
+
+// Ajout de module avec synchronisation BDD
 addBtn.onclick = () => {
     const name = document.getElementById("module-name").value.trim();
     const description = document.getElementById("module-description").value.trim();
@@ -24,29 +72,21 @@ addBtn.onclick = () => {
         return;
     }
 
-    const module = document.createElement("div");
-    module.classList.add("module-box"); // utilise la classe CSS
-
-    const position = modulesList.children.length % 3;
-
-    if (position === 0) {
-        module.style.order = 1; // gauche
-    } else if (position === 1) {
-        module.style.order = 2; // centre
-    } else {
-        module.style.order = 3; // droite
-    }
-
-    module.innerHTML = `
-        <h3>${name}</h3>
-        <p>${description}</p>
-        <button onclick="window.location.href='pages/observation.html?module=${encodeURIComponent(name)}'">Observations</button>
-
-        <button onclick="this.parentElement.remove()" >Supprimer</button>
-    `;
-
-    modulesList.appendChild(module);
-    modal.style.display = "none";
-    document.getElementById("module-name").value = "";
-    document.getElementById("module-description").value = "";
+    fetch('script-php/module/add_module.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, description})
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                modal.style.display = "none";
+                document.getElementById("module-name").value = "";
+                document.getElementById("module-description").value = "";
+                // Recharge la liste depuis la BDD pour avoir l'ID du module
+                loadModules();
+            } else {
+                alert(data.message);
+            }
+        });
 };
