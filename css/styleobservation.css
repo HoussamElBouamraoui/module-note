@@ -66,6 +66,21 @@ textarea {
 .delete-btn:hover {
     background-color: #cc0000;
 }
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* espace au-dessus */
+    display: inline-block;
+}
+.edit-btn:hover {
+    background-color: #3e8e41;
+}
 button {
     background-color: #8400ff;
     color: white;

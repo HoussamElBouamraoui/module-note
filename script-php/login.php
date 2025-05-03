@@ -1,5 +1,6 @@
 <?php
 global $pdo;
+
 session_start();
 require_once '../base_donne/connexion.php';
 
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($admin && $password === $admin['password']) {
             $_SESSION['user_id'] = $admin['id'];
             $_SESSION['username'] = $admin['username'];
+            // Pas besoin de $_SESSION['id_student'] pour l'admin
 
             if (isset($_POST['remember'])) {
                 setcookie("admin_id", $admin['id'], [
@@ -38,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($student && password_verify($password, $student['password'])) {
             $_SESSION['user_id'] = $student['id'];
             $_SESSION['username'] = $student['username'];
+            $_SESSION['id_student'] = $student['id']; // AJOUT OBLIGATOIRE
 
             setcookie("user_id", $student['id'], [
                 'expires' => time() + (30 * 24 * 60 * 60),
@@ -46,9 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'httponly' => true,
                 'samesite' => 'Lax'
             ]);
-            // Définit l'attribut SameSite du cookie à "Lax" :
-            // le cookie ne sera envoyé que lors de navigations normales (ex : clic sur un lien),
-            // mais pas lors de requêtes cross-site de type POST, ce qui aide à prévenir les attaques CSRF.
 
             header("Location: ../index.php");
             exit();

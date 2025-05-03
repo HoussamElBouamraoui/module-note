@@ -35,7 +35,7 @@ function createModuleBox(module) {
     div.innerHTML = `
       <h3>${module.name}</h3>
       <p>${module.desciption}</p>
-      <button onclick="window.location.href='pages/observation.html?module=${encodeURIComponent(module.name)}'">Observations</button>
+      <button onclick="window.location.href='pages/observation.php?id_module=${module.id}&module=${encodeURIComponent(module.name)}'">Observations</button>
       <button class="btn-delete">Supprimer</button>
     `;
     // Ajoute l'action JS de suppression

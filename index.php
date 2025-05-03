@@ -73,6 +73,7 @@ require_once 'script-php/sessioncookies.php';
         </div>
     </div>
 <?php endif; ?>
+<!-- Fin de la modale -->
 
 <!-- Liste des modules -->
 <div id="modules-list"></div>
