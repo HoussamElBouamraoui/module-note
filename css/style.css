@@ -1,17 +1,25 @@
+/* Barre de navigation */
 #navbar-container {
     position: fixed;
-    background-color: #000000;
+    top: 0;
+    left: 0;
     width: 100%;
+    background-color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 25px 19px 20px;
-
-    top: 0;
-    left: 0;
     font-family: "lemon milk", sans-serif;
+    z-index: 1000;
 }
 
+/* Aligner les enfants directs horizontalement */
+#navbar-container > div {
+    display: flex;
+    align-items: center;
+}
+
+/* Lien de la barre de navigation */
 a {
     text-decoration: none;
     color: #ffffff;
@@ -25,11 +33,53 @@ a:hover {
     font-size: 20px;
 }
 
+/* Menu à droite (login, mode, langue) */
 #menu {
     display: flex;
     gap: 20px;
 }
+#menu > div {
+    display: flex;
+    align-items: center;
+}
 
+/* Sélecteur de langue */
+#langue {
+    margin-right: 40px;
+}
+#lang-select {
+    padding: 8px 16px;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 22px;
+    background: #f7f7fa;
+    color: #333;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: pointer;
+}
+#lang-select:focus,
+#lang-select:hover {
+    border-color: #8400ff;
+    box-shadow: 0 0 0 2px #e3edff;
+    background: #fff;
+}
+
+/* Contenu principal */
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 #container h1 {
     display: flex;
     justify-content: center;
@@ -39,21 +89,26 @@ a:hover {
     font-family: "lemon milk", sans-serif;
     color: #8400ff;
 }
-
 #container p {
     text-align: center;
     font-family: "lemon milk", sans-serif;
     font-size: 20px;
 }
-
-#container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+#container a {
+    padding-left: 20px;
 }
 
+/* Boutons */
+.btn-style {
+    padding: 10px 15px;
+    font-size: 17px;
+    background-color: #8400ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
 button {
     margin-top: 20px;
     background-color: #8400ff;
@@ -65,7 +120,6 @@ button {
     transition: 0.6s;
     font-family: "lemon milk", sans-serif;
 }
-
 button:hover {
     background-color: #ffffff;
     color: #8400ff;
@@ -73,19 +127,15 @@ button:hover {
     border: 5px solid #ffffff;
 }
 
-#container a {
-    padding-left: 20px;
-}
-
-/* ✅ Style des modules ajoutés dynamiquement */
+/* Modules dynamiques */
 #modules-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* ou space-around pour joli */
+    justify-content: center;
     gap: 20px;
 }
 .module-box {
-    flex: 0 0 calc(33.33% - 20px); /* 3 modules max sur une ligne */
+    flex: 0 0 calc(33.33% - 20px);
     box-sizing: border-box;
     border: 1px solid #8400ff;
     font-family: "lemon milk", sans-serif;
@@ -97,18 +147,15 @@ button:hover {
     color: #000000;
     transition: transform 0.3s ease;
 }
-@media (max-width: 768px) {
-    .module-box {
-        flex: 0 1 100%; /* 1 module par ligne */
-    }
-}
 .module-box:hover {
     transform: scale(1.03);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
-
-
+@media (max-width: 768px) {
+    .module-box {
+        flex: 0 1 100%;
+    }
+}
 
 /* Modale */
 .modal {
@@ -122,7 +169,6 @@ button:hover {
     background-color: rgba(0,0,0,0.5);
     font-family: Bahnschrift, "lemon milk", sans-serif;
 }
-
 .modal-content {
     background-color: #fff;
     width: 90%;
@@ -133,7 +179,6 @@ button:hover {
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 .modal-content input,
 .modal-content textarea {
     width: 90%;
@@ -143,29 +188,24 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 .modal-buttons {
     display: flex;
     justify-content: space-between;
 }
-
 .modal-buttons button {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-
 #addBtn {
     background-color: #8400ff;
     color: white;
 }
-
 #cancelBtn {
     background-color: #eee;
     color: #8400ff;
 }
-
 .close {
     position: absolute;
     right: 15px;
@@ -173,14 +213,3 @@ button:hover {
     font-size: 20px;
     cursor: pointer;
 }
-
-.btn-style {
-    padding: 10px 15px;
-    font-size: 17px;
-    background-color: #8400ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-#logo

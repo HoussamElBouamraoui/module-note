@@ -118,3 +118,17 @@ body {
 .login-container a:hover {
     text-decoration: underline;
 }
+
+.login-container button {
+    padding: 12px 24px;
+    background-color: #8400ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.login-container button:hover {
+    background-color: black;
+}

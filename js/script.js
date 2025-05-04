@@ -35,10 +35,11 @@ function createModuleBox(module) {
     div.innerHTML = `
       <h3>${module.name}</h3>
       <p>${module.desciption}</p>
-      <button onclick="window.location.href='pages/observation.php?id_module=${module.id}&module=${encodeURIComponent(module.name)}'">Observations</button>
-      <button class="btn-delete">Supprimer</button>
+      <button onclick="window.location.href='pages/observation.php?id_module=${module.id}&module=${encodeURIComponent(module.name)}'">
+        <span data-i18n="observations_btn"></span>
+      </button>
+      <button class="btn-delete"><span data-i18n="delete"></span></button>
     `;
-    // Ajoute l'action JS de suppression
     div.querySelector('.btn-delete').onclick = () => {
         if (confirm('Supprimer ce module ?')) {
             fetch('script-php/module/delete_module.php', {
@@ -49,13 +50,14 @@ function createModuleBox(module) {
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                        div.remove(); // retire le module du DOM
+                        div.remove();
                     } else {
                         alert(data.message || "Erreur lors de la suppression");
                     }
                 });
         }
     };
+    if (typeof translatePage === "function") translatePage(div);
     return div;
 }
 
