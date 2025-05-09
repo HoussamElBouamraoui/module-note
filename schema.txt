@@ -25,6 +25,10 @@ projetdevweb/
 │   ├── script-observation.js      # Script JavaScript pour la page d'observation
 │   └── lang.js
 │
+│── resume_qcm/
+│   ├── get_resume.php               # pour recuperer les resume du base de donnes
+│   ├── resume_qcm.css               # feuille de style pour la page de résumé et QCM
+│   └── resume_qcm.php              # pour afficher le résumé et le QCM
 ├── image/
 │   ├── ar.json                # fichier Json pour la langue  arabe
 │   ├── de.json                # fichier Json pour la langue allemande
@@ -60,3 +64,18 @@ projetdevweb/
 ├─schema                           #fichier admet la structure du projet
 │
 └─index.php                      # Page principale de l'application
+
+
+
+
+---------------------------------------------------------------------
+|  Liste des modules  | Résumé & QCM du module sélectionné           |
+|-------------------- |----------------------------------------------|
+| [Resume 1]          | Titre Module 1                               |
+| [Resume 2]          | Résumé complet ici...                        |
+| [Resume 3]          | QCM interactif ici...                        |
+| ...                 |                                              |
+                      | ---------------------------------------------|
+|                     | Posez une question à l’IA sur ce module...   |
+|                     | [_____________________________] [Envoyer]    |
+----------------------------------------------------------------------

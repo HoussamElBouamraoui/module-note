@@ -41,3 +41,15 @@ CREATE TABLE `sessions` (
   `session_data` TEXT NOT NULL,
   `last_access` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- table pour les resumes
+CREATE TABLE resume (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        titre VARCHAR(255) NOT NULL,
+        contenu TEXT NOT NULL,
+        id_module INT NOT NULL,
+        id_student INT NOT NULL,
+        date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_module) REFERENCES modules(id) ON DELETE CASCADE,
+        FOREIGN KEY (id_student) REFERENCES student(id) ON DELETE CASCADE
+);
