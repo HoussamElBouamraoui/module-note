@@ -3,7 +3,7 @@
   "home": "الرئيسية",
   "sign_out": "تسجيل الخروج",
   "login": "تسجيل الدخول",
-  "mode": "الوضع",
+  "about_me": "نبذة عني",
   "welcome_user": "مرحبًا، {username}!",
   "welcome_guest": "مرحبًا!",
   "explore": "استكشف الوحدات المتاحة.",
@@ -39,5 +39,14 @@
   "edit": "تعديل",
   "save": "حفظ",
 
-  "observations_btn": "الملاحظات"
+  "observations_btn": "الملاحظات",
+  "about_title": "معلومات عني",
+  "fullname_label": "الاسم الكامل:",
+  "fullname_value": "حسام البوعمراوي",
+  "studies_label": "الدراسات:",
+  "studies_value": "هندسة المعلوماتية",
+  "passions_label": "الهوايات:",
+  "passions_value": "الذكاء الاصطناعي، الأمن السيبراني، تطوير الويب",
+  "project_label": "المشروع:",
+  "project_value": "Smart Notes - تطبيق للمساعدة في المراجعة"
 }

@@ -3,7 +3,7 @@
   "home": "Startseite",
   "sign_out": "Abmelden",
   "login": "Anmelden",
-  "mode": "Modus",
+  "about_me": "Über mich",
   "welcome_user": "Willkommen, {username}!",
   "welcome_guest": "Willkommen!",
   "explore": "Entdecken Sie die verfügbaren Module.",
@@ -38,5 +38,14 @@
   "delete": "Löschen",
   "edit": "Bearbeiten",
   "save": "Speichern",
-  "observations_btn": "Beobachtungen"
+  "observations_btn": "Beobachtungen",
+  "about_title": "ÜBER MICH",
+  "fullname_label": "VOLLSTÄNDIGER NAME:",
+  "fullname_value": "Houssam El Bouamraoui",
+  "studies_label": "STUDIUM:",
+  "studies_value": "Informatikingenieurwesen",
+  "passions_label": "LEIDENSCHAFTEN:",
+  "passions_value": "KI, Cybersicherheit, Webentwicklung",
+  "project_label": "PROJEKT:",
+  "project_value": "Smart Notes - Lernhilfe-App"
 }

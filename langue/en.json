@@ -3,7 +3,7 @@
   "home": "Home",
   "sign_out": "Sign out",
   "login": "Login",
-  "mode": "Mode",
+  "about_me": "About Me",
   "welcome_user": "Welcome, {username}!",
   "welcome_guest": "Welcome!",
   "explore": "Explore the available modules.",
@@ -38,5 +38,14 @@
   "delete": "Delete",
   "edit": "Edit",
   "save": "Save",
-  "observations_btn": "Observations"
+  "observations_btn": "Observations",
+  "about_title": "ABOUT ME",
+  "fullname_label": "FULL NAME:",
+  "fullname_value": "Houssam El Bouamraoui",
+  "studies_label": "STUDIES:",
+  "studies_value": "Computer Engineering",
+  "passions_label": "PASSIONS:",
+  "passions_value": "AI, Cybersecurity, Web Development",
+  "project_label": "PROJECT:",
+  "project_value": "Smart Notes - application that helps students in their studies"
 }

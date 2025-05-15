@@ -3,7 +3,7 @@
   "home": "Inicio",
   "sign_out": "Cerrar sesión",
   "login": "Iniciar sesión",
-  "mode": "Modo",
+  "about_me": "Sobre mí",
   "welcome_user": "¡Bienvenido, {username}!",
   "welcome_guest": "¡Bienvenido!",
   "explore": "Explora los módulos disponibles.",
@@ -38,5 +38,14 @@
   "delete": "Eliminar",
   "edit": "Editar",
   "save": "Guardar",
-  "observations_btn": "Observaciones"
+  "observations_btn": "Observaciones",
+  "about_title": "SOBRE MÍ",
+  "fullname_label": "NOMBRE COMPLETO:",
+  "fullname_value": "Houssam El Bouamraoui",
+  "studies_label": "ESTUDIOS:",
+  "studies_value": "Ingeniería Informática",
+  "passions_label": "PASIONES:",
+  "passions_value": "IA, Ciberseguridad, Desarrollo Web",
+  "project_label": "PROYECTO:",
+  "project_value": "Smart Notes - Aplicación de ayuda para repasar"
 }

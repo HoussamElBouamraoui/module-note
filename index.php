@@ -13,7 +13,9 @@ require_once 'script-php/sessioncookies.php';
 <body>
 <section id="navbar-container">
     <div id="acceuil">
-        <a href="index.php" data-i18n="home"></a>
+
+            <img src="image/logo.png" alt="Logo" style="height: 40px;">
+
     </div>
     <div id="menu">
         <div id="login">
@@ -24,7 +26,7 @@ require_once 'script-php/sessioncookies.php';
             <?php endif; ?>
         </div>
         <div id="mode">
-            <a href="index.php" data-i18n="mode"></a>
+            <a href="#" onclick="toggleAbout()" data-i18n="about_me"></a>
         </div>
         <div id="langue">
             <select id="lang-select">
@@ -76,5 +78,27 @@ require_once 'script-php/sessioncookies.php';
     const isLoggedIn = <?= json_encode($isLoggedIn) ?>;
 </script>
 <script src="js/script.js"></script>
+<div id="aboutMe" style="margin-top: 190px;">
+    <div class="about-container">
+        <div class="about-text">
+            <h2 data-i18n="about_title"></h2>
+            <p><strong data-i18n="fullname_label"></strong> <span data-i18n="fullname_value"></span></p>
+            <p><strong data-i18n="studies_label"></strong> <span data-i18n="studies_value"></span></p>
+            <p><strong data-i18n="passions_label"></strong> <span data-i18n="passions_value"></span></p>
+            <p><strong data-i18n="project_label"></strong> <span data-i18n="project_value"></span></p>
+        </div>
+        <div class="about-image">
+            <img src="image/me.png" alt="Houssam">
+        </div>
+    </div>
+    <div class="about-links">
+        <a href="https://www.linkedin.com/in/el-bouamraoui-houssam-0569a1326" target="_blank" title="LinkedIn">
+            <img src="image/linkedin.png" alt="LinkedIn">
+        </a>
+        <a href="https://www.github.com/HoussamElBouamraoui" target="_blank" title="GitHub">
+            <img src="image/github.png" alt="GitHub">
+        </a>
+    </div>
+</div>
 </body>
 </html>

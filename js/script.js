@@ -92,3 +92,15 @@ addBtn.onclick = () => {
             }
         });
 };
+function toggleAbout() {
+    const section = document.getElementById("aboutMe");
+    if (section) {
+        const isVisible = section.style.display === "block";
+        section.style.display = isVisible ? "none" : "block";
+        if (!isVisible) {
+            section.classList.remove("fadeInSlide");
+            void section.offsetWidth; // force reflow
+            section.classList.add("fadeInSlide");
+        }
+    }
+}
