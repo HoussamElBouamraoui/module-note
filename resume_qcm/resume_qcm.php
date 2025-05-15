@@ -3,12 +3,25 @@ session_start();
 require_once '../base_donne/connexion.php';
 
 if (!isset($_SESSION['id_student'])) {
-    header('Location: ../pages/login.html');
-    exit;
+    // Vérifiez si un cookie peut restaurer la session
+    if (!empty($_COOKIE['user_id'])) {
+        $stmt = $pdo->prepare("SELECT * FROM student WHERE id = :id");
+        $stmt->execute(['id' => intval($_COOKIE['user_id'])]);
+        $student = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($student) {
+            $_SESSION['id_student'] = $student['id'];
+            $_SESSION['username'] = $student['username'];
+        } else {
+            header('Location: ../pages/login.html');
+            exit;
+        }
+    } else {
+        header('Location: ../pages/login.html');
+        exit;
+    }
 }
 
 $id_student = $_SESSION['id_student'];
-
 // Récupérer les modules de l'étudiant
 $modules = $pdo->prepare("SELECT id, name FROM modules WHERE id_student = ?");
 $modules->execute([$id_student]);

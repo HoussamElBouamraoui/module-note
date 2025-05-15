@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                question: "Fais un résumé detailler  des notes de ce module et qui est stylé .",
+                question: "Fais un résumé detailler  des notes de ce module avec des resume et faire des paragraphe pour le lire facilement et tu peux retourner a  la ligne et qui est stylé .",
                 id_module: moduleId
             })
         });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                question: "Génère un QCM des questions de 5 à 10 à choix multiples sur les notes de ce module et je veux le qcm soit styles , avec 4 propositions par question et si il te demande les reponse tu le fournit luit les reponses ",
+                question: "Génère des qcm apartir de votre resume des qcm de niveau moyenne et eleve avec des reponses et une reponse juste et 3 fausse reponse et qui est stylé .",
                 id_module: moduleId
             })
         });

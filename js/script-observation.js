@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
                 .catch(() => {
-                    resumeDiv.innerHTML = "Erreur lors de la récupération du résumé.";
+                    resumeDiv.innerHTML = "";
                 });
         });
     }
